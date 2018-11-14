@@ -9,7 +9,7 @@ package sopadeletras;
  *
  * @author JuanAntonio
  */
-public class SopaDeLetras {
+public class ClienteSopaDeLetras {
 
     /**
      * @param args the command line arguments
