@@ -1,6 +1,6 @@
 
 
-package Pruebas;
+package sopadeletras;
 
 import javafx.util.Pair;
 

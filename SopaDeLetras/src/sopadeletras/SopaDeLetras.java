@@ -1,6 +1,6 @@
 
 
-package Pruebas;
+package sopadeletras;
 
 import java.util.ArrayList;
 import javafx.geometry.Orientation;
@@ -88,4 +88,16 @@ public class SopaDeLetras {
     int getMonedas(){
         return monedas;
     }
+    
+    @Override
+    public String toString(){
+        String cad="";
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                cad+=matrix[i][j]+"  ";
+            }
+            cad+="\n";
+        }
+        return cad;
+    } 
 }

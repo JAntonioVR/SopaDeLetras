@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Pruebas;
+package sopadeletras;
 
+import sopadeletras.SopaDeLetras;
 import java.util.ArrayList;
 import javafx.util.Pair;
 
@@ -125,6 +126,11 @@ public class NewMain {
         s.encontrarPalabra("sandia");
         s.encontrarPalabra("limon");
         s.encontrarPalabra("pera");
+        s.encontrarPalabra("manzana");
+        s.encontrarPalabra("naranja");
+        s.encontrarPalabra("fresa");
+        s.encontrarPalabra("melon");
+        
         
         if(!s.encontrarPalabra("rabano"))
                System.out.println("No esta");
@@ -136,8 +142,13 @@ public class NewMain {
             System.out.println("\n");
         }
         
+        System.out.println("TO STRING");
         
+        System.out.println(s.toString());
         
+        if(s.estaResuelta()){
+            System.out.println("ESTÁ RESUELTA");
+        }
         
     }
     
