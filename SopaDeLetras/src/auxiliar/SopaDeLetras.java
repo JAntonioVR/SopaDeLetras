@@ -1,6 +1,6 @@
 
 
-package sopadeletras;
+package auxiliar;
 
 import java.util.ArrayList;
 import javafx.geometry.Orientation;
@@ -14,13 +14,13 @@ public class SopaDeLetras {
     private ArrayList<Palabra> wordsNotFound;
     private int monedas;
     
-    SopaDeLetras(char [][] m, ArrayList<Palabra> wf){
+    public SopaDeLetras(char [][] m, ArrayList<Palabra> wf){
         this.matrix = m;
         this.wordsNotFound = wf;
         this.monedas=5;
     }
     
-    boolean encontrarPalabra(String p){
+    public boolean encontrarPalabra(String p){
         
         Palabra encontrada = null;
         boolean esta=false;
@@ -61,7 +61,7 @@ public class SopaDeLetras {
         
     }
     
-    String dameUnaPista(){
+    public String dameUnaPista(){
         if(wordsNotFound.isEmpty()==false && monedas>=1){
             monedas-=1;
             return wordsNotFound.get(0).getCheat();
@@ -69,7 +69,7 @@ public class SopaDeLetras {
         else return null;
     }
     
-    String dameUnaDefinicion(){
+    public String dameUnaDefinicion(){
         if(wordsNotFound.isEmpty()==false && monedas>=2){
             monedas-=2;
             return wordsNotFound.get(0).getDefinition();
@@ -77,19 +77,19 @@ public class SopaDeLetras {
         else return null;
     }
     
-    boolean estaResuelta(){
+    public boolean estaResuelta(){
         return wordsNotFound.isEmpty();
     }
     
-    int cuantasQuedan(){
+    public int cuantasQuedan(){
         return wordsNotFound.size();
     }
     
-    int getMonedas(){
+    public int getMonedas(){
         return monedas;
     }
     
-    char [][] getMatrix(){
+    public char [][] getMatrix(){
         return matrix;
     }
     

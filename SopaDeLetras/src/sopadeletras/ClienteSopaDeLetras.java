@@ -160,6 +160,10 @@ public class ClienteSopaDeLetras {
                 
                     //Cerramos el socket
                     socketServicio.close();
+                    
+                    if(acabada.equals("1")){
+                        System.out.println("Enhorabuena, has acabado la sopa!!");
+                    }
 
                 
 

@@ -1,6 +1,6 @@
 
 
-package sopadeletras;
+package auxiliar;
 
 import javafx.util.Pair;
 
@@ -19,7 +19,7 @@ public class Palabra {
     
     boolean encontrada;
     
-    Palabra(String n, Pair<Integer, Integer> p, Orientacion o, String pi, String def){
+    public Palabra(String n, Pair<Integer, Integer> p, Orientacion o, String pi, String def){
         this.name=n;
         this.position=p;
         this.orientation=o;

@@ -3,6 +3,9 @@
 
 package sopadeletras;
 
+import auxiliar.Palabra;
+import auxiliar.Orientacion;
+import auxiliar.SopaDeLetras;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -75,7 +78,7 @@ public class ServidorSopaDeLetras {
         name="manzana";
         definition="Fruto del manzano, de forma globosa algo hundida por los extremos del eje, de epicarpio delgado, liso y de color verde claro, amarillo pálido o encarnado, mesocarpio con sabor acídulo o ligeramente azucarado, y semillas pequeñas, de color de caoba, encerradas en un endocarpio coriáceo.";
         pista="También se pueden encontrar en las ciudades";
-        position=new Pair(0,1);
+        position=new Pair(1,0);
         orientation=Orientacion.HORIZONTAL;
         p=new Palabra(name, position,orientation,pista,definition);
         palabras.add(p);
