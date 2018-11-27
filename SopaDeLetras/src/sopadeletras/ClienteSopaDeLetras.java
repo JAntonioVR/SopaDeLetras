@@ -35,6 +35,7 @@ public class ClienteSopaDeLetras {
         String palabra;
         String cuantasQuedan;
         String monedas;
+        String sopa;
         
         
         // Nombre del host donde se ejecuta el servidor:
@@ -71,23 +72,33 @@ public class ClienteSopaDeLetras {
                 
                 //Antes de empezar a jugar la sopa obviamente no está acabada
                 acabada="0";
-                
+                socketServicio=new Socket(host, port);
                 while(acabada.equals("0")){
                     
                     // Creamos un socket que se conecte a "host" y "port":
-                socketServicio=new Socket(host, port);		
+		
                         
                 //Declaramos los asistentes de envío y recepción de cadenas
 		PrintWriter outPrinter = new PrintWriter(socketServicio.getOutputStream(),true);
 		BufferedReader inReader = new BufferedReader(new InputStreamReader(socketServicio.getInputStream()));
 		
+                    //Mostramos la sopa
+                    cadenaEnviada="7";
+                    outPrinter.println(cadenaEnviada);
+                    for(int i=0; i<8; i++){
+                        sopa=inReader.readLine();
+                        System.out.println(sopa);
+                    }
+                    outPrinter.flush();
                     
                     //Comprobamos las monedas que nos quedan usando el servidor
                     cadenaEnviada="5";
                     outPrinter.println(cadenaEnviada);
                     monedas=inReader.readLine();
+                    monedas=inReader.readLine();
                     System.out.println(monedas);
-                    
+                    outPrinter.flush();
+
                     
                     System.out.println("¿Qué desea?");
                     System.out.println("\t1: Dame una pista (1 monedas)");
@@ -110,18 +121,21 @@ public class ClienteSopaDeLetras {
                         outPrinter.println(cadenaEnviada);
                         pista=inReader.readLine();                   
                         System.out.println("PISTA: "+pista);
+                        break;
                     case "2":
                       //DEFINICIÓN
                         outPrinter.println(cadenaEnviada);
                         definicion=inReader.readLine();
                         
                         System.out.println("DEFINICIÓN: "+definicion);
+                        break;
                     case "3":
                       //PALABRAS RESTANTES
                         outPrinter.println(cadenaEnviada);
                         cuantasQuedan=inReader.readLine();
                         
                         System.out.println(cuantasQuedan); 
+                        break;
                     case "4":
                       //INTRODUCIR PALABRA
                       //En este caso se envía una palabra al servidor
@@ -132,19 +146,21 @@ public class ClienteSopaDeLetras {
                         outPrinter.println(cadenaEnviada);
                         palabra=inReader.readLine();
                         System.out.println(palabra);
+                        break;
                     }   
+                    outPrinter.flush();
+
                     
-                    
-                    
-                    //Se pregunta al servidor si la sopa está acabada
+                    //Se pregunta al servidor si la sopa está acabada después de cualquier accion
                     cadenaEnviada="6";
                     outPrinter.println(cadenaEnviada);
                     acabada=inReader.readLine();
-                    
+                    outPrinter.flush();
+                    }
+                
                     //Cerramos el socket
                     socketServicio.close();
-                }
-                
+
                 
 
             } catch (UnknownHostException e) {

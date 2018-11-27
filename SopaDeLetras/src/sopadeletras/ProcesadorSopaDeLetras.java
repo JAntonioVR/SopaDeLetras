@@ -37,55 +37,71 @@ public class ProcesadorSopaDeLetras {
             // Cadena que se enviará
 		String cadEnviada;
             try{
-                // Obtiene los flujos de escritura/lectura
-		inputStream=socketServicio.getInputStream();
-		outputStream=socketServicio.getOutputStream();
-			
-                // Lee el número en cuestión
-		BufferedReader inReader = new BufferedReader(new InputStreamReader(inputStream));
-                cadRecibida = inReader.readLine();
-                
-                switch (cadRecibida){
-                    case "1":
-                      //PISTA 
-                        cadEnviada=sopa.dameUnaPista();  
-                        break;
-                    case "2":
-                      //DEFINICIÓN
-                        cadEnviada="loquesea";
-                        break;
-                    case "3":
-                      //PALABRAS RESTANTES
-                        cadEnviada="loquesea";  
-                        break;
-                    case "5":
-                      //MONEDAS RESTANTES
-                        cadEnviada="Quedan "+sopa.getMonedas()+" monedas.";
-                        break;
-                    case "6":
-                      //ACABADA O NO
-                        if(sopa.estaResuelta())
-                            cadEnviada="1";
-                        else
-                            cadEnviada="0";
-                        break;
-                    default:
-                      //PALABRA
-                        if(sopa.encontrarPalabra(cadRecibida)){
-                            cadEnviada="Se ha encontrado la palabra "+cadRecibida;
-                        }
-                        else{
-                            cadEnviada="No se ha encontrado la palabra "+cadRecibida; 
-                        }
-                }
-                
-                PrintWriter writer = new PrintWriter(outputStream, true);
-                System.out.println(sopa.toString());
-                writer.println(cadEnviada);
-                
-                
+                while(!sopa.estaResuelta()){
+                    // Obtiene los flujos de escritura/lectura
+                    inputStream=socketServicio.getInputStream();
+                    outputStream=socketServicio.getOutputStream();
+
+
+                    // Lee el número en cuestión
+                    BufferedReader inReader = new BufferedReader(new InputStreamReader(inputStream));
+                    cadRecibida = inReader.readLine();
+                    PrintWriter writer = new PrintWriter(outputStream, true);
+                    writer.flush();
+                    //PrintWriter writer = new PrintWriter(outputStream, true);
+                    //cadEnviada=sopa.toString();
+                    //writer.println(cadEnviada);
+
+                    switch (cadRecibida){
+                        case "1":
+                          //PISTA 
+                            cadEnviada=sopa.dameUnaPista();  
+                            break;
+                        case "2":
+                          //DEFINICIÓN
+                            cadEnviada=sopa.dameUnaDefinicion();
+                            break;
+                        case "3":
+                          //PALABRAS RESTANTES
+                            cadEnviada="Quedan "+sopa.cuantasQuedan()+" palabras.";  
+                            break;
+                        case "5":
+                          //MONEDAS RESTANTES
+                            cadEnviada="Quedan "+sopa.getMonedas()+" monedas.";
+                            break;
+                        case "6":
+                          //ACABADA O NO
+                            if(sopa.estaResuelta())
+                                cadEnviada="1";
+                            else
+                                cadEnviada="0";
+                            break;
+                        case "7":
+                            char [][] matrix=sopa.getMatrix();
+                            cadEnviada="";
+
+                            for(int i=0; i<8; i++){
+                                for(int j=0; j<8; j++){
+                                    cadEnviada+=matrix[i][j]+"  ";
+                                }
+                                cadEnviada+="\n";
+                            }
+                            break;
+                        default:
+                          //PALABRA
+                            if(sopa.encontrarPalabra(cadRecibida)){
+                                cadEnviada="Se ha encontrado la palabra "+cadRecibida;
+                            }
+                            else{
+                                cadEnviada="No se ha encontrado la palabra "+cadRecibida; 
+                            }
+                    }
+
+                    //System.out.println(sopa.toString());
+                    writer.println(cadEnviada);
+                }    
             } catch (IOException e) {
-			System.err.println("Error al obtener los flujso de entrada/salida.");
+			System.err.println("Error al obtener los flujos de entrada/salida.");
 		}
         }
         

@@ -128,7 +128,7 @@ public class ServidorSopaDeLetras {
         //SANDÍA
         name="sandia";
         definition="Planta herbácea anual, de la familia de las cucurbitáceas, con tallo velloso, flexible, rastrero, de tres a cuatro metros de largo, hojas partidas en segmentos redondeados y de color verde oscuro, flores amarillas, fruto casi esférico, tan grande que a veces pesa 20 kg, de corteza verde uniforme o jaspeada y pulpa encarnada, granujienta, aguanosa y dulce, entre la que se encuentran, formando líneas concéntricas, muchas pepitas negras y aplastadas. Es planta muy cultivada en España.";
-        pista="Cuando algo está muy bien, se suele decir que es la ...";
+        pista="Se suele tomar muy fría en verano";
         position=new Pair(0,1);
         orientation=Orientacion.VERTICAL;
         p=new Palabra(name, position,orientation,pista,definition);

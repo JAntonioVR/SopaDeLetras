@@ -89,6 +89,10 @@ public class SopaDeLetras {
         return monedas;
     }
     
+    char [][] getMatrix(){
+        return matrix;
+    }
+    
     @Override
     public String toString(){
         String cad="";
