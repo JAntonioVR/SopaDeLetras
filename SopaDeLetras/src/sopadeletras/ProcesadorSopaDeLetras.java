@@ -49,9 +49,6 @@ public class ProcesadorSopaDeLetras {
                     cadRecibida = inReader.readLine();
                     PrintWriter writer = new PrintWriter(outputStream, true);
                     writer.flush();
-                    //PrintWriter writer = new PrintWriter(outputStream, true);
-                    //cadEnviada=sopa.toString();
-                    //writer.println(cadEnviada);
 
                     switch (cadRecibida){
                         case "1":
@@ -97,10 +94,12 @@ public class ProcesadorSopaDeLetras {
                                 cadEnviada="No se ha encontrado la palabra "+cadRecibida; 
                             }
                     }
-
-                    //System.out.println(sopa.toString());
                     writer.println(cadEnviada);
                 }    
+                PrintWriter writer = new PrintWriter(outputStream, true);
+                writer.flush();
+                cadEnviada="1";
+                writer.println(cadEnviada);
             } catch (IOException e) {
 			System.err.println("Error al obtener los flujos de entrada/salida.");
 		}
